@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:regulation/constants.dart';
+import 'package:regulation/helper/data/data.dart';
+import 'package:regulation/views/chapter_page/chapter_page.dart';
+import 'package:regulation/views/filter_all_paragraphs_page/filter_all_paragraphs_page.dart';
+
+import 'main_page_card_widget/main_page_card_widget.dart';
+
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(Constants.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const FilterAllParagraphsPage()),
+              );
+            },
+            icon: const Icon(Icons.search),
+          ),
+        ],
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              itemCount: allChapters.length,
+              itemBuilder: (context, index) {
+                final chapter = allChapters[index];
+
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChapterPage(
+                                chapter: chapter,
+                              )),
+                    );
+                  },
+                  child: MainPageCardWidget(chapter: chapter),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
