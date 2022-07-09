@@ -1,7 +1,7 @@
 import 'package:regulation_api/regulation_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorageRegulationApi {
+class LocalStorageRegulationApi extends RegulationApi {
   final List<ChapterInfo> _tableOfContents;
 
   LocalStorageRegulationApi({

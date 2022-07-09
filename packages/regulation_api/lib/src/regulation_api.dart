@@ -7,9 +7,9 @@ abstract class RegulationApi {
 
   List<ChapterInfo> getTableOfContents();
 
-  Future<List<Paragraph>> getParagraphs();
+  // Future<List<Paragraph>> getParagraphs();
 
-  Future<void> saveParagraph(Paragraph paragraph);
+  // Future<void> saveParagraph(Paragraph paragraph);
 
-  Future<void> deleteParagraph(String id);
+  // Future<void> deleteParagraph(String id);
 }
