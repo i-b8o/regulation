@@ -1,16 +1,21 @@
 import 'package:regulation_api/regulation_api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageRegulationApi {
   final List<ChapterInfo> _tableOfContents;
 
-  LocalStorageRegulationApi()
-      : _tableOfContents = Regulation.chapters.map((chapter) {
+  LocalStorageRegulationApi({
+    required SharedPreferences plugin,
+  })  : _tableOfContents = Regulation.chapters.map((chapter) {
           return ChapterInfo(chapter.name, chapter.num);
-        }).toList();
+        }).toList(),
+        _plugin = plugin;
 
   List<ChapterInfo> getTableOfContents() {
     return _tableOfContents;
   }
+
+  final SharedPreferences _plugin;
 
   // Future<List<Paragraph>> getParagraphs() {}
 
