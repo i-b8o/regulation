@@ -39,6 +39,8 @@ dependencies:
   flutter_bloc: ^8.0.1
   bloc: ^8.0.3
   equatable: ^2.0.3
+  dynamic_color: ^1.4.0
+
 
 
   local_storage_regulation_api:
@@ -60,6 +62,13 @@ dev_dependencies:
   flutter_launcher_icons: "^0.9.2"
   very_good_analysis: ^3.0.1
 
+  
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
   
 
 flutter_icons:

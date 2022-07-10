@@ -27,7 +27,16 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+            ),
+            child: AppBar(
+              elevation: 0.0,
+            ),
+          )),
       drawer: const NavigationDrawer(),
       body: IndexedStack(
         index: selectedTab.index,
@@ -39,24 +48,24 @@ class HomeView extends StatelessWidget {
         onPressed: () => log('pushed'),
         child: const Icon(Icons.add),
       ),
-      // bottomNavigationBar: BottomAppBar(
-      //   shape: const CircularNotchedRectangle(),
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //     children: [
-      //       _HomeTabButton(
-      //         groupValue: selectedTab,
-      //         value: HomeTab.buy,
-      //         icon: const Icon(Icons.list_rounded),
-      //       ),
-      //       _HomeTabButton(
-      //         groupValue: selectedTab,
-      //         value: HomeTab.choice,
-      //         icon: const Icon(Icons.show_chart_rounded),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _HomeTabButton(
+              groupValue: selectedTab,
+              value: HomeTab.buy,
+              icon: const Icon(Icons.list_rounded),
+            ),
+            _HomeTabButton(
+              groupValue: selectedTab,
+              value: HomeTab.choice,
+              icon: const Icon(Icons.show_chart_rounded),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

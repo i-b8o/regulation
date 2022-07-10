@@ -3,32 +3,16 @@ import 'package:flutter/material.dart';
 class FlutterRegulationTheme {
   static ThemeData get light {
     return ThemeData(
-      appBarTheme: const AppBarTheme(
-        color: Color(0xFF13B9FF),
-      ),
-      colorScheme: ColorScheme.fromSwatch(
-        accentColor: const Color(0xFF13B9FF),
-      ),
-      snackBarTheme: const SnackBarThemeData(
-        behavior: SnackBarBehavior.floating,
-      ),
-      toggleableActiveColor: const Color(0xFF13B9FF),
-    );
+        appBarTheme: const AppBarTheme(
+            color: Color(0xFFFDFDFD), foregroundColor: Color(0xFF747E8B)),
+        scaffoldBackgroundColor: Colors.white);
   }
 
   static ThemeData get dark {
     return ThemeData(
       appBarTheme: const AppBarTheme(
-        color: Color(0xFF13B9FF),
+        color: Color(0xFFFDFDFD),
       ),
-      colorScheme: ColorScheme.fromSwatch(
-        brightness: Brightness.dark,
-        accentColor: const Color(0xFF13B9FF),
-      ),
-      snackBarTheme: const SnackBarThemeData(
-        behavior: SnackBarBehavior.floating,
-      ),
-      toggleableActiveColor: const Color(0xFF13B9FF),
     );
   }
 }
