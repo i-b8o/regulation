@@ -35,6 +35,12 @@ class HomeView extends StatelessWidget {
             ),
             child: AppBar(
               elevation: 0.0,
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                ),
+              ],
             ),
           )),
       drawer: const NavigationDrawer(),
