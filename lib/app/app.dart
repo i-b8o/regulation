@@ -4,8 +4,8 @@ import 'package:regulation_repository/regulation_repository.dart';
 
 import '../home/view/home_page.dart';
 import '../one/one.dart';
+import '../table_of_contents/view/table_of_contents.dart';
 import '../theme/theme.dart';
-import '../two/two.dart';
 
 class App extends StatelessWidget {
   const App({Key? key, required this.regulationRepository}) : super(key: key);
@@ -31,7 +31,7 @@ class AppView extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/buy': (context) => One(),
-        '/regulation': (context) => Two(),
+        '/tableOfContents': (context) => (TableOfContentsView()),
       },
       initialRoute: '/',
       // home: const HomePage(),

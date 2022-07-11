@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
             if (state is StateBuy) {
               Navigator.of(context).pushNamed('/buy');
             } else if (state is StateRegulation) {
-              Navigator.of(context).pushNamed('/regulation');
+              Navigator.of(context).pushNamed('/tableOfContents');
             }
           },
           child: GridView.count(
@@ -66,15 +66,6 @@ class HomeView extends StatelessWidget {
       ForbiddenRegulationCard(),
       ForbiddenRegulationCard(),
     ];
-  }
-}
-
-class GridViews extends StatelessWidget {
-  const GridViews({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
 
