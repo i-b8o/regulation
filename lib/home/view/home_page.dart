@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation/home/home.dart';
@@ -32,7 +30,12 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top,
             ),
-            child: HomePageAppBar(),
+            child: Container(
+              child: HomePageAppBar(),
+              decoration: BoxDecoration(
+                border: Border.all(color: Color(0xFFE2E4E7)),
+              ),
+            ),
           )),
       drawer: const NavigationDrawer(),
       body: IndexedStack(

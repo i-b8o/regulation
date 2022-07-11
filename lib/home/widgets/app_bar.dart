@@ -12,13 +12,18 @@ class HomePageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
     return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
       builder: (context, state) {
         if (state is SearchTextFieldActivatedState) {
-          return SearchAppBar();
+          return SearchAppBar(
+            foregroundColor: foregroundColor,
+          );
         }
-        return InitAppBAr();
+        return InitAppBAr(
+          foregroundColor: foregroundColor,
+        );
       },
     );
   }
