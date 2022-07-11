@@ -5,12 +5,12 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial()) {
+  HomeBloc() : super(HomeInitialState()) {
     on<HomeInitialEvent>(_onHomeInitialEvent);
     on<SearchTextFieldActivatedEvent>(_onSearchTextFieldActivatedEvent);
   }
   void _onHomeInitialEvent(HomeInitialEvent event, Emitter<HomeState> emit) {
-    emit(HomeInitial());
+    emit(HomeInitialState());
   }
 
   void _onSearchTextFieldActivatedEvent(

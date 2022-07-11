@@ -24,25 +24,62 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60.0),
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-            ),
-            child: Container(
-              child: HomePageAppBar(),
-              decoration: BoxDecoration(
-                border: Border.all(color: Color(0xFFE2E4E7)),
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(60.0),
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).padding.top,
               ),
-            ),
-          )),
-      drawer: const NavigationDrawer(),
-      body: IndexedStack(
-        // index: selectedTab.index,
-        children: const [One(), Two()],
+              child: Container(
+                child: HomePageAppBar(),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xFFE2E4E7)),
+                ),
+              ),
+            )),
+        drawer: const NavigationDrawer(),
+        body: GridView.count(
+          crossAxisCount: 2,
+          padding: const EdgeInsets.all(25),
+          mainAxisSpacing: 25,
+          crossAxisSpacing: 25,
+          children: getGridViewChildren(),
+        ));
+  }
+
+  List<Widget> getGridViewChildren() {
+    return [
+      Image.asset(
+        'assets/images/icon.png',
       ),
-    );
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+      Image.asset(
+        'assets/images/icon.png',
+      ),
+    ];
   }
 }
 
