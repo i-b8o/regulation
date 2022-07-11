@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:regulation/home/cubit/home_cubit.dart';
+import 'package:regulation/home/home.dart';
 
 import 'package:regulation/two/two.dart';
 
@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeCubit(),
+      create: (context) => HomeBloc(),
       child: const HomeView(),
     );
   }
@@ -25,7 +25,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
@@ -33,69 +32,13 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top,
             ),
-            child: AppBar(
-              elevation: 0.0,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                ),
-              ],
-            ),
+            child: HomePageAppBar(),
           )),
       drawer: const NavigationDrawer(),
       body: IndexedStack(
-        index: selectedTab.index,
+        // index: selectedTab.index,
         children: const [One(), Two()],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        key: const Key('homeView_addTodo_floatingActionButton'),
-        onPressed: () => log('pushed'),
-        child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _HomeTabButton(
-              groupValue: selectedTab,
-              value: HomeTab.buy,
-              icon: const Icon(Icons.list_rounded),
-            ),
-            _HomeTabButton(
-              groupValue: selectedTab,
-              value: HomeTab.choice,
-              icon: const Icon(Icons.show_chart_rounded),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _HomeTabButton extends StatelessWidget {
-  const _HomeTabButton({
-    Key? key,
-    required this.groupValue,
-    required this.value,
-    required this.icon,
-  }) : super(key: key);
-
-  final HomeTab groupValue;
-  final HomeTab value;
-  final Widget icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () => context.read<HomeCubit>().setTab(value),
-      iconSize: 32,
-      color:
-          groupValue != value ? null : Theme.of(context).colorScheme.secondary,
-      icon: icon,
     );
   }
 }
