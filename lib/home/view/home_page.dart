@@ -54,31 +54,31 @@ class HomeView extends StatelessWidget {
         'assets/images/icon.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
       Image.asset(
-        'assets/images/icon.png',
+        'assets/images/icon-1.png',
       ),
     ];
   }
