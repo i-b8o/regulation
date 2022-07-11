@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(60.0),
@@ -40,9 +41,9 @@ class HomeView extends StatelessWidget {
         drawer: const NavigationDrawer(),
         body: GridView.count(
           crossAxisCount: 2,
-          padding: const EdgeInsets.all(25),
-          mainAxisSpacing: 25,
-          crossAxisSpacing: 25,
+          padding: EdgeInsets.all(size.width * 0.1),
+          mainAxisSpacing: size.width * 0.1,
+          crossAxisSpacing: size.width * 0.1,
           children: getGridViewChildren(),
         ));
   }
