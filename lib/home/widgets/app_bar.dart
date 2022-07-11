@@ -16,7 +16,7 @@ class HomePageAppBar extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
       builder: (context, state) {
-        if (state is SearchTextFieldActivatedState) {
+        if (state is StateSearchTextFieldActivated) {
           return SearchAppBar(
             foregroundColor: foregroundColor,
           );

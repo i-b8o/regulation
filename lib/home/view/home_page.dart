@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation/home/home.dart';
 
-import 'package:regulation/two/two.dart';
-
-import '../../one/one.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -39,48 +35,82 @@ class HomeView extends StatelessWidget {
               ),
             )),
         drawer: const NavigationDrawer(),
-        body: GridView.count(
-          crossAxisCount: 2,
-          padding: EdgeInsets.all(size.width * 0.1),
-          mainAxisSpacing: size.width * 0.1,
-          crossAxisSpacing: size.width * 0.1,
-          children: getGridViewChildren(),
+        body: BlocListener<HomeBloc, HomeState>(
+          listener: (context, state) {
+            if (state is StateBuy) {
+              Navigator.of(context).pushNamed('/buy');
+            } else if (state is StateRegulation) {
+              Navigator.of(context).pushNamed('/regulation');
+            }
+          },
+          child: GridView.count(
+            crossAxisCount: 2,
+            padding: EdgeInsets.all(size.width * 0.1),
+            mainAxisSpacing: size.width * 0.1,
+            crossAxisSpacing: size.width * 0.1,
+            children: getGridViewChildren(context),
+          ),
         ));
   }
 
-  List<Widget> getGridViewChildren() {
+  List<Widget> getGridViewChildren(BuildContext context) {
     return [
-      Image.asset(
+      RegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+      ForbiddenRegulationCard(),
+    ];
+  }
+}
+
+class GridViews extends StatelessWidget {
+  const GridViews({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class ForbiddenRegulationCard extends StatelessWidget {
+  const ForbiddenRegulationCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.read<HomeBloc>().add(EventBuy());
+      },
+      child: Image.asset(
+        'assets/images/icon-1.png',
+      ),
+    );
+  }
+}
+
+class RegulationCard extends StatelessWidget {
+  const RegulationCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.read<HomeBloc>().add(EventRegulation());
+      },
+      child: Image.asset(
         'assets/images/icon.png',
       ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-      Image.asset(
-        'assets/images/icon-1.png',
-      ),
-    ];
+    );
   }
 }
 

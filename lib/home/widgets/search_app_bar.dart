@@ -15,10 +15,11 @@ class SearchAppBar extends StatelessWidget {
       children: [
         IconButton(
             onPressed: () {
-              context.read<HomeBloc>().add(HomeInitialEvent());
+              context.read<HomeBloc>().add(EventHomeInitial());
             },
             icon: Icon(
               Icons.arrow_back,
+              size: 24.0,
               color: foregroundColor,
             )),
         Expanded(
@@ -46,7 +47,7 @@ class SearchAppBar extends StatelessWidget {
                 hintText: "Поиск",
               ),
               style: TextStyle(
-                fontSize: 12.0,
+                fontSize: 15.0,
               ),
             ),
           ),
@@ -55,6 +56,7 @@ class SearchAppBar extends StatelessWidget {
           onPressed: () {},
           icon: Icon(
             Icons.search,
+            size: 24.0,
             color: foregroundColor,
           ),
         ),

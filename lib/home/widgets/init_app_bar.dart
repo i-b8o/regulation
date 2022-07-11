@@ -25,7 +25,7 @@ class InitAppBAr extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            context.read<HomeBloc>().add(SearchTextFieldActivatedEvent());
+            context.read<HomeBloc>().add(EventSearchTextFieldActivated());
           },
           icon: Icon(
             Icons.search,

@@ -7,10 +7,14 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class HomeInitialEvent extends HomeEvent {
-  const HomeInitialEvent();
+class EventHomeInitial extends HomeEvent {
+  const EventHomeInitial();
 }
 
-class SearchTextFieldActivatedEvent extends HomeEvent {
-  const SearchTextFieldActivatedEvent();
+class EventSearchTextFieldActivated extends HomeEvent {
+  const EventSearchTextFieldActivated();
 }
+
+class EventRegulation extends HomeEvent {}
+
+class EventBuy extends HomeEvent {}

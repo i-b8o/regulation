@@ -7,6 +7,10 @@ abstract class HomeState extends Equatable {
   List<Object> get props => [];
 }
 
-class HomeInitialState extends HomeState {}
+class StateHomeInitial extends HomeState {}
 
-class SearchTextFieldActivatedState extends HomeState {}
+class StateSearchTextFieldActivated extends HomeState {}
+
+class StateRegulation extends HomeState {}
+
+class StateBuy extends HomeState {}

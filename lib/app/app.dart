@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
 import '../home/view/home_page.dart';
+import '../one/one.dart';
 import '../theme/theme.dart';
+import '../two/two.dart';
 
 class App extends StatelessWidget {
   const App({Key? key, required this.regulationRepository}) : super(key: key);
@@ -26,7 +28,13 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       theme: FlutterRegulationTheme.light,
       darkTheme: FlutterRegulationTheme.dark,
-      home: const HomePage(),
+      routes: {
+        '/': (context) => HomePage(),
+        '/buy': (context) => One(),
+        '/regulation': (context) => Two(),
+      },
+      initialRoute: '/',
+      // home: const HomePage(),
     );
   }
 }
