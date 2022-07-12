@@ -8,13 +8,19 @@ class LocalStorageRegulationApi extends RegulationApi {
   LocalStorageRegulationApi({
     required SharedPreferences plugin,
   })  : _tableOfContents = Regulation.chapters.map((chapter) {
-          return ChapterInfo(chapter.name, chapter.num);
+          return ChapterInfo(
+              name: chapter.name,
+              num: chapter.num,
+              orderNum: chapter.orderNum,
+              id: chapter.id);
         }).toList(),
         _regulationAbbreviation = Regulation.abbreviation,
         _plugin = plugin;
 
   List<ChapterInfo> getTableOfContents() {
+    _tableOfContents.sort((a, b) => a.orderNum.compareTo(b.orderNum));
     return _tableOfContents;
+    ;
   }
 
   String getRegulationAbbreviation() {

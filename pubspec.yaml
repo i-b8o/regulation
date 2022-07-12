@@ -74,6 +74,11 @@ flutter:
   assets:
     - assets/images/icon.png
     - assets/images/icon-1.png
+
+  fonts:
+    - family: Verdana
+      fonts:
+        - asset: assets/fonts/VERDANAI.TTF
     
 
 flutter_icons:
