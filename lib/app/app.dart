@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation/home/home.dart';
 import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
-
-import '../home/view/home_page.dart';
 import '../one/one.dart';
 import '../table_of_contents/view/table_of_contents.dart';
 import '../theme/theme.dart';
@@ -30,7 +28,9 @@ class AppView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => TableOfContentsBloc(),
+          create: (context) => TableOfContentsBloc(
+            regulationRepository: context.read<RegulationRepository>(),
+          ),
         ),
         BlocProvider(
           create: (context) => HomeBloc(),

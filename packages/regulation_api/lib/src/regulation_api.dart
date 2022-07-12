@@ -4,8 +4,8 @@ abstract class RegulationApi {
   const RegulationApi();
 
   List<ChapterInfo> getTableOfContents();
-  String getRegulationName() {
-    return Regulation.name;
+  String getRegulationAbbreviation() {
+    return Regulation.abbreviation;
   }
 
   // Future<List<Paragraph>> getParagraphs();

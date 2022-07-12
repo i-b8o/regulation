@@ -21,10 +21,13 @@ class TableOfContentsAppBar extends StatelessWidget {
             foregroundColor: foregroundColor,
           );
         }
-        return InitAppBAr(
-          foregroundColor: foregroundColor,
-          title: '',
-        );
+        if (state is StateTableOfContentsInitial) {
+          return InitAppBAr(
+            foregroundColor: foregroundColor,
+            title: state.title,
+          );
+        }
+        return Container();
       },
     );
 

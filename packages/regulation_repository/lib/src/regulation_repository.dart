@@ -8,5 +8,6 @@ class RegulationRepository {
   final RegulationApi _regulationApi;
 
   List<ChapterInfo> getTableOfContents() => _regulationApi.getTableOfContents();
-  String getRegulationName() => _regulationApi.getRegulationName();
+  String getRegulationAbbreviation() =>
+      _regulationApi.getRegulationAbbreviation();
 }

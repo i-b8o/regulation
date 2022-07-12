@@ -23,7 +23,11 @@ class InitAppBAr extends StatelessWidget {
             color: foregroundColor,
           ),
         ),
-        Text(title),
+        Text(title,
+            style: TextStyle(
+                color: Color(0XFF3B4C61),
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0)),
         IconButton(
           onPressed: () {
             // context

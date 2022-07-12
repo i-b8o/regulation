@@ -3,22 +3,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageRegulationApi extends RegulationApi {
   final List<ChapterInfo> _tableOfContents;
-  final String _regulationName;
+  final String _regulationAbbreviation;
 
   LocalStorageRegulationApi({
     required SharedPreferences plugin,
   })  : _tableOfContents = Regulation.chapters.map((chapter) {
           return ChapterInfo(chapter.name, chapter.num);
         }).toList(),
-        _regulationName = Regulation.name,
+        _regulationAbbreviation = Regulation.abbreviation,
         _plugin = plugin;
 
   List<ChapterInfo> getTableOfContents() {
     return _tableOfContents;
   }
 
-  String getRegulationName() {
-    return _regulationName;
+  String getRegulationAbbreviation() {
+    return _regulationAbbreviation;
   }
 
   final SharedPreferences _plugin;
