@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../table_of_contents.dart';
 
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({
@@ -12,7 +15,9 @@ class SearchAppBar extends StatelessWidget {
       children: [
         IconButton(
             onPressed: () {
-              // context.read<TableOfContentsBloc>().add(EventHomeInitial());
+              context
+                  .read<TableOfContentsBloc>()
+                  .add(EventTableOfContentsInitial());
             },
             icon: Icon(
               Icons.arrow_back,

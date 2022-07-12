@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../table_of_contents.dart';
 
 class InitAppBAr extends StatelessWidget {
   const InitAppBAr({
@@ -23,6 +26,7 @@ class InitAppBAr extends StatelessWidget {
             color: foregroundColor,
           ),
         ),
+        // TODO on tap popup message with a full name of a regulation
         Text(title,
             style: TextStyle(
                 color: Color(0XFF3B4C61),
@@ -30,9 +34,9 @@ class InitAppBAr extends StatelessWidget {
                 fontSize: 16.0)),
         IconButton(
           onPressed: () {
-            // context
-            //     .read<TableOfContentsBloc>()
-            //     .add(EventTableOfContentsSearchTextFieldActivated());
+            context
+                .read<TableOfContentsBloc>()
+                .add(EventTableOfContentsSearchTextFieldActivated());
           },
           icon: Icon(
             Icons.search,
