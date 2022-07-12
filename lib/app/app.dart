@@ -32,17 +32,16 @@ class AppView extends StatelessWidget {
             regulationRepository: context.read<RegulationRepository>(),
           ),
         ),
-        BlocProvider(
-          create: (context) => HomeBloc(),
-        ),
+        BlocProvider(create: (_) => HomeCubit())
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: FlutterRegulationTheme.light,
         darkTheme: FlutterRegulationTheme.dark,
         routes: {
           '/': (context) => HomePage(),
           '/buy': (context) => One(),
-          '/tableOfContents': (context) => (TableOfContentsView()),
+          '/tableOfContents': (context) => (TableOfContentsPage()),
         },
         initialRoute: '/',
         // home: const HomePage(),

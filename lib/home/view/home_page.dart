@@ -1,103 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation/home/home.dart';
+import 'package:regulation/table_of_contents/view/view.dart';
+
+import '../../one/one.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const HomeView();
-  }
-}
-
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
     return Scaffold(
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(60.0),
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).padding.top,
-              ),
-              child: Container(
-                child: HomePageAppBar(),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFE2E4E7)),
-                ),
-              ),
-            )),
-        drawer: const NavigationDrawer(),
-        body: BlocListener<HomeBloc, HomeState>(
-          listener: (context, state) {
-            if (state is StateBuy) {
-              Navigator.of(context).pushNamed('/buy');
-            } else if (state is StateRegulation) {
-              Navigator.of(context).pushNamed('/tableOfContents');
-            }
-          },
-          child: GridView.count(
-            crossAxisCount: 2,
-            padding: EdgeInsets.all(size.width * 0.1),
-            mainAxisSpacing: size.width * 0.1,
-            crossAxisSpacing: size.width * 0.1,
-            children: getGridViewChildren(context),
-          ),
-        ));
-  }
-
-  List<Widget> getGridViewChildren(BuildContext context) {
-    return [
-      RegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-      ForbiddenRegulationCard(),
-    ];
-  }
-}
-
-class ForbiddenRegulationCard extends StatelessWidget {
-  const ForbiddenRegulationCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.read<HomeBloc>().add(EventBuy());
-      },
-      child: Image.asset(
-        'assets/images/icon-1.png',
+      body: IndexedStack(
+        index: selectedTab.index,
+        children: const [TableOfContentsPage(), One()],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _HomeTabButton(
+              groupValue: selectedTab,
+              value: HomeTab.buy,
+              icon: const Icon(Icons.list_rounded),
+            ),
+            _HomeTabButton(
+              groupValue: selectedTab,
+              value: HomeTab.chapters,
+              icon: const Icon(Icons.show_chart_rounded),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class RegulationCard extends StatelessWidget {
-  const RegulationCard({
+class _HomeTabButton extends StatelessWidget {
+  const _HomeTabButton({
     Key? key,
+    required this.groupValue,
+    required this.value,
+    required this.icon,
   }) : super(key: key);
+
+  final HomeTab groupValue;
+  final HomeTab value;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.read<HomeBloc>().add(EventRegulation());
-      },
-      child: Image.asset(
-        'assets/images/icon.png',
-      ),
+    return IconButton(
+      onPressed: () => context.read<HomeCubit>().setTab(value),
+      iconSize: 32,
+      color:
+          groupValue != value ? null : Theme.of(context).colorScheme.secondary,
+      icon: icon,
     );
   }
 }

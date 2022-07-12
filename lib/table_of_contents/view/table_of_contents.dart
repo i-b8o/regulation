@@ -8,15 +8,6 @@ class TableOfContentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TableOfContentsView();
-  }
-}
-
-class TableOfContentsView extends StatelessWidget {
-  const TableOfContentsView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
@@ -52,7 +43,7 @@ class ChapterCard extends StatelessWidget {
   final String name, num;
   final int chapterID;
 
-// TODO user adjustable font size and font family
+// TODO user customizable font (size and font family)
   @override
   Widget build(BuildContext context) {
     return Card(
