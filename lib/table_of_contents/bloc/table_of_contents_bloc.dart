@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -8,19 +6,20 @@ part 'table_of_contents_state.dart';
 
 class TableOfContentsBloc
     extends Bloc<TableOfContentsEvent, TableOfContentsState> {
-  TableOfContentsBloc() : super(TableOfContentsInitial()) {
+  TableOfContentsBloc() : super(StateTableOfContentsInitial()) {
     on<EventTableOfContentsInitial>(_onEventTableOfContentsInitial);
     on<EventTableOfContentsSearchTextFieldActivated>(
-        _onEventSearchTextFieldActivated);
-  }
-
-  void _onEventSearchTextFieldActivated(
-      EventSearchTextFieldActivatedevent, Emitter<TableOfContentsState> emit) {
-    emit(StateSearchTextFieldActivated());
+        _onEventTableOfContentsSearchTextFieldActivated);
   }
 
   void _onEventTableOfContentsInitial(
       EventTableOfContentsInitial event, Emitter<TableOfContentsState> emit) {
-    emit(TableOfContentsInitial());
+    emit(StateTableOfContentsInitial());
+  }
+
+  void _onEventTableOfContentsSearchTextFieldActivated(
+      EventTableOfContentsSearchTextFieldActivated event,
+      Emitter<TableOfContentsState> emit) {
+    emit(StateTableOfContentsSearchTextFieldActivated());
   }
 }

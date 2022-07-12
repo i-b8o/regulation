@@ -7,7 +7,11 @@ abstract class TableOfContentsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class EventTableOfContentsInitial extends TableOfContentsEvent {}
+class EventTableOfContentsInitial extends TableOfContentsEvent {
+  const EventTableOfContentsInitial();
+}
 
 class EventTableOfContentsSearchTextFieldActivated
-    extends TableOfContentsEvent {}
+    extends TableOfContentsEvent {
+  const EventTableOfContentsSearchTextFieldActivated();
+}

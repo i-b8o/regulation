@@ -4,8 +4,10 @@ class InitAppBAr extends StatelessWidget {
   const InitAppBAr({
     Key? key,
     this.foregroundColor,
+    required this.title,
   }) : super(key: key);
   final Color? foregroundColor;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,6 +23,7 @@ class InitAppBAr extends StatelessWidget {
             color: foregroundColor,
           ),
         ),
+        Text(title),
         IconButton(
           onPressed: () {
             // context

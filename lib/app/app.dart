@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:regulation/home/home.dart';
+import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
 import '../home/view/home_page.dart';
@@ -25,16 +27,26 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: FlutterRegulationTheme.light,
-      darkTheme: FlutterRegulationTheme.dark,
-      routes: {
-        '/': (context) => HomePage(),
-        '/buy': (context) => One(),
-        '/tableOfContents': (context) => (TableOfContentsView()),
-      },
-      initialRoute: '/',
-      // home: const HomePage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => TableOfContentsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: FlutterRegulationTheme.light,
+        darkTheme: FlutterRegulationTheme.dark,
+        routes: {
+          '/': (context) => HomePage(),
+          '/buy': (context) => One(),
+          '/tableOfContents': (context) => (TableOfContentsView()),
+        },
+        initialRoute: '/',
+        // home: const HomePage(),
+      ),
     );
   }
 }

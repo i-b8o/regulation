@@ -7,6 +7,7 @@ abstract class TableOfContentsState extends Equatable {
   List<Object> get props => [];
 }
 
-class TableOfContentsInitial extends TableOfContentsState {}
+class StateTableOfContentsInitial extends TableOfContentsState {}
 
-class StateSearchTextFieldActivated extends TableOfContentsState {}
+class StateTableOfContentsSearchTextFieldActivated
+    extends TableOfContentsState {}
