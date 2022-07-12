@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:regulation_api/regulation_api.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
 part 'table_of_contents_event.dart';
@@ -20,6 +21,8 @@ class TableOfContentsBloc
 
   String get regulationAbbreviation =>
       _regulationRepository.getRegulationAbbreviation();
+
+  List<ChapterInfo> get chapters => _regulationRepository.getTableOfContents();
 
   void _onEventTableOfContentsInitial(
       EventTableOfContentsInitial event, Emitter<TableOfContentsState> emit) {

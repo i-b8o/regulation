@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
+import 'package:provider/provider.dart';
 import '../widgets/widgets.dart';
 
 class TableOfContentsPage extends StatelessWidget {
@@ -32,8 +33,11 @@ class TableOfContentsView extends StatelessWidget {
               ),
             )),
         drawer: const NavigationDrawer(),
-        body: Center(
-          child: Text("RFF"),
+        body: ListView(
+          children: context
+              .select((TableOfContentsBloc bloc) => bloc.chapters
+                  .map((e) => Text('${e.num.replaceAll("-", "")} - ${e.name}')))
+              .toList(),
         ));
   }
 }
