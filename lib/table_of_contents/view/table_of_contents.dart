@@ -46,36 +46,43 @@ class ChapterCard extends StatelessWidget {
 // TODO user customizable font (size and font family)
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Color(0XFFFAFAFA),
-      margin: EdgeInsets.zero,
-      shape: const Border(
-        bottom: BorderSide(width: 1.0, color: Color.fromRGBO(230, 230, 230, 1)),
-      ),
-      child: Container(
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-          child: Column(
-            children: [
-              Text.rich(
-                TextSpan(
-                    text: num.isEmpty ? '' : '$num. ',
-                    style: TextStyle(
-                      color: Color(0XFF3B4C61),
-                      fontWeight: FontWeight.w600,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: name,
-                        style: TextStyle(
-                            color: Color(0XFF3B4C61),
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Verdana'),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/paragraph', arguments: chapterID);
+      },
+      child: Card(
+        color: Color(0XFFFAFAFA),
+        margin: EdgeInsets.zero,
+        shape: const Border(
+          bottom:
+              BorderSide(width: 1.0, color: Color.fromRGBO(230, 230, 230, 1)),
+        ),
+        child: Container(
+            alignment: Alignment.centerLeft,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+            child: Column(
+              children: [
+                Text.rich(
+                  TextSpan(
+                      text: num.isEmpty ? '' : '$num. ',
+                      style: TextStyle(
+                        color: Color(0XFF3B4C61),
+                        fontWeight: FontWeight.w600,
                       ),
-                    ]),
-              ),
-            ],
-          )),
+                      children: [
+                        TextSpan(
+                          text: name,
+                          style: TextStyle(
+                              color: Color(0XFF3B4C61),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Verdana'),
+                        ),
+                      ]),
+                ),
+              ],
+            )),
+      ),
     );
   }
 }

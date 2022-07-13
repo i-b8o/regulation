@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation/home/home.dart';
+import 'package:regulation/paragraph/view/paragraph_page.dart';
 import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 import '../one/one.dart';
@@ -42,6 +43,9 @@ class AppView extends StatelessWidget {
           '/': (context) => HomePage(),
           '/buy': (context) => One(),
           '/tableOfContents': (context) => (TableOfContentsPage()),
+          '/paragraph': (context) => ParagraphPage(
+                id: ModalRoute.of(context)?.settings.arguments as int,
+              )
         },
         initialRoute: '/',
         // home: const HomePage(),

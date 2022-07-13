@@ -3,10 +3,13 @@ import 'models/models.dart';
 abstract class RegulationApi {
   const RegulationApi();
 
-  List<ChapterInfo> getTableOfContents();
   String getRegulationAbbreviation() {
     return Regulation.abbreviation;
   }
+
+  List<ChapterInfo> getTableOfContents();
+
+  List<Paragraph> getParagraphsByChapterID(int chapterID);
 
   // Future<List<Paragraph>> getParagraphs();
 
