@@ -44,7 +44,7 @@ class AppView extends StatelessWidget {
           '/buy': (context) => One(),
           '/tableOfContents': (context) => (TableOfContentsPage()),
           '/paragraph': (context) => ParagraphPage(
-                id: ModalRoute.of(context)?.settings.arguments as int,
+                id: ModalRoute.of(context)!.settings.arguments as int,
               )
         },
         initialRoute: '/',

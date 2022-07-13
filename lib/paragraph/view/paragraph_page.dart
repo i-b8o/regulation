@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+
 import 'package:regulation/paragraph/bloc/paragraph_bloc.dart';
 import 'package:regulation_api/regulation_api.dart';
 import 'package:regulation_repository/regulation_repository.dart';
@@ -51,7 +52,20 @@ class ParagraphCard extends StatelessWidget {
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
           child: paragraph.isHTML
-              ? Html(data: paragraph.content)
+              ? SingleChildScrollView(
+                  padding: EdgeInsets.all(2),
+                  scrollDirection: Axis.horizontal,
+                  child: HtmlWidget(paragraph.content)
+
+                  // Html(
+                  //   data: paragraph.content,
+                  //   style: {
+                  //     "table": Style(
+                  //       width: MediaQuery.of(context).size.width,
+                  //     ),
+                  //   },
+                  // ),
+                  )
               : Text(paragraph.content)),
     );
   }
